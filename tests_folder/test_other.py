@@ -1,4 +1,4 @@
-from configuration_folder import configuration
+from configuration_folder import configuration as cfg
 from helper_folder import mathlib
 import requests
 import pytest
@@ -31,7 +31,7 @@ class TestClass:
         assert n > 0
 
     def test_configuration(self):
-        config = configuration.Configurations.number
+        config = cfg.number
         print(config)
         return config
 

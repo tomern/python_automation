@@ -20,3 +20,12 @@ class Browser:
 
     def maximize(self):
         self.driver.maximize_window()
+
+    def refresh(self):
+        self.driver.refresh()
+
+    def back(self):
+        self.driver.back()
+
+    def forward(self):
+        self.driver.forward()

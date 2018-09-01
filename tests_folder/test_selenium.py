@@ -1,9 +1,8 @@
 import pytest
 from browser_folder.browser import Browser
 from pages.google_page import Google
+from configuration_folder import configuration as cfg
 
-
-rerun = 1
 
 @pytest.fixture()
 def browser():
@@ -12,7 +11,7 @@ def browser():
     _browser.quit()
 
 
-@pytest.mark.flaky(reruns=rerun, reruns_delay=2)
+@pytest.mark.flaky(reruns=cfg.rerun, reruns_delay=1)
 @pytest.mark.element
 def test_one(browser):
     browser.navigate("https://www.google.com")
@@ -28,5 +27,3 @@ def test_two(browser):
     search_term = 'test'
     google.fill_search_field(search_term+'\n')
     assert search_term in browser.get_url()
-
-

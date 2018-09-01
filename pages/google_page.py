@@ -7,6 +7,7 @@ class Google(BasePage):
         super().__init__(browser)
         self.search_field = lambda: self.driver.find_element(By.NAME, 'q')
         self.gmail_btn = lambda: self.driver.find_element(By.XPATH, '//a[@dir="ltr"][1]')
+        self.no_btn = lambda: self.driver.find_element(By.XPATH, '//a[@dir="ltsdfgfgr"][1]')
 
     def click_on_gmail_btn(self):
         self.browser_helper.wait_for_element(self.gmail_btn)
@@ -15,4 +16,7 @@ class Google(BasePage):
     def fill_search_field(self, text):
         self.browser_helper.wait_for_element(self.search_field)
         self.browser_helper.send_text_to_element(self.search_field, text)
+
+    def click_on_non_existing_btn(self):
+        self.browser_helper.click_element(self.no_btn)
 

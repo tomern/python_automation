@@ -1,5 +1,4 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
 
 
 class BrowserHelper:
@@ -15,4 +14,9 @@ class BrowserHelper:
     def wait_for_element(self, el, time_out=10):
         wait = WebDriverWait(self.driver, time_out)
         return wait.until(lambda d: el().is_displayed())
+
+    def scroll_to_element(self, el):
+        self.driver.execute_script("arguments[0].scrollIntoView();", el())
+
+
 
