@@ -18,5 +18,8 @@ class BrowserHelper:
     def scroll_to_element(self, el):
         self.driver.execute_script("arguments[0].scrollIntoView();", el())
 
+    def click_element_javascript(self, el):
+        self.driver.execute_script("arguments[0].click();", el())
 
-
+    def find_element(self, search_type, locator_atr):
+        return self.driver.find_element(search_type, locator_atr)
