@@ -2,10 +2,10 @@ from configuration_folder import configuration as cfg
 from helper_folder import mathlib
 import requests
 import pytest
+from helper_folder import cloudinary as cloud
 
 
 class TestClass:
-
     @pytest.mark.skipif(2 > 2, reason="I don't want to run this now")
     def test_calc_total(self):
         res = mathlib.calc_total(6, 5)
@@ -35,4 +35,6 @@ class TestClass:
         print(config)
         return config
 
-
+    def test_cloudinary(self):
+        url = cloud.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
+        assert url is not None
