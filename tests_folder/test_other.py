@@ -3,6 +3,9 @@ from helper_folder import mathlib
 import requests
 import pytest
 from helper_folder import cloudinary as cloud
+from helper_folder import files
+import random
+import datetime
 
 
 class TestClass:
@@ -38,3 +41,14 @@ class TestClass:
     def test_cloudinary(self):
         url = cloud.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
         assert url is not None
+
+    def test_file_open_and_write(self):
+        data = str(datetime.datetime.now())
+        path = "C:/Users/tomern23/PycharmProjects/PytestProject/files/test.txt"
+        files.save_file(data, path)
+        file = open(path)
+        content = file.read()
+        file.close()
+        print(content)
+        assert data in content
+

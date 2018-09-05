@@ -10,6 +10,6 @@ def upload_cloudinary(full_path):
         api_secret="bAw3EPy5A85ZE693hjAHGj8I7kM"
     )
 
-    # res = cloudinary.uploader.upload_image(file=full_path, options={'use_filename': True, 'unique_filename': True})
-    res = cloudinary.uploader.upload_image(file=full_path)
+    res = cloudinary.uploader.upload_image(full_path, use_filename=True, unique_filename=False)
+    # res = cloudinary.uploader.upload_image(file=full_path)
     return res.url
