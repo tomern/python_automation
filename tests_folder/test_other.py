@@ -55,3 +55,9 @@ class TestClass:
     def test_cloudinary_with_config_json(self):
         url = cloudnew.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
         assert url is not None
+
+    def test_get_usre_from_config(self):
+        res = cfg.User.SiteA.usrename
+        assert res is not None
+
+
