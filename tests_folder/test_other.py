@@ -3,8 +3,8 @@ from helper_folder import mathlib
 import requests
 import pytest
 from helper_folder import cloudinary as cloud
+from helper_folder import cloudinary_new as cloudnew
 from helper_folder import files
-import random
 import datetime
 
 
@@ -52,3 +52,6 @@ class TestClass:
         print(content)
         assert data in content
 
+    def test_cloudinary_with_config_json(self):
+        url = cloudnew.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
+        assert url is not None

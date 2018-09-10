@@ -11,5 +11,4 @@ def upload_cloudinary(full_path):
     )
 
     res = cloudinary.uploader.upload_image(full_path, use_filename=True, unique_filename=False)
-    # res = cloudinary.uploader.upload_image(file=full_path)
     return res.url
