@@ -2,12 +2,14 @@ from configuration_folder import configuration as cfg
 from helper_folder import mathlib
 import requests
 import pytest
+from pytest import mark
 from helper_folder import cloudinary as cloud
 from helper_folder import cloudinary_new as cloudnew
 from helper_folder import files
 import datetime
 
 
+@mark.smoke
 class TestClass:
     @pytest.mark.skipif(2 > 2, reason="I don't want to run this now")
     def test_calc_total(self):
@@ -28,7 +30,7 @@ class TestClass:
         r = requests.get('http://www.google.com')
         assert r.status_code == 200
 
-    @pytest.mark.parametrize('n', [1, 2, 4])
+    @pytest.mark.parametrize('n', [1, 2, 4, 3])
     def test_params(self, n):
         print(n)
         assert n > 0
@@ -56,8 +58,12 @@ class TestClass:
         url = cloudnew.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
         assert url is not None
 
-    def test_get_usre_from_config(self):
+    def test_get_user_from_config(self):
         res = cfg.User.SiteA.usrename
         assert res is not None
 
-
+    def test_print_name(self, env):
+        if env == "qa":
+            assert 2 > 1
+        if env == "stam":
+            assert 2 < 1
