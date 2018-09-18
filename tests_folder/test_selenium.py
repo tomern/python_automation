@@ -1,14 +1,6 @@
 import pytest
-from browser_folder.browser import Browser
 from pages.google_page import Google
 from configuration_folder import configuration as cfg
-
-
-@pytest.fixture()
-def browser():
-    _browser = Browser()
-    yield _browser
-    _browser.quit()
 
 
 @pytest.mark.flaky(reruns=cfg.rerun, reruns_delay=1)

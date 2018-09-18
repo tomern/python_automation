@@ -1,16 +1,3 @@
-import pytest
-from mongo_folder.mongo import MongoDb
-
-
-@pytest.fixture()
-def get_db_config():
-    return MongoDb("configurations").db
-
-
-@pytest.fixture()
-def get_db_test():
-    return MongoDb("test").db
-
 
 def test_configurations(get_db_config):
     db = get_db_config

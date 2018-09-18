@@ -1,6 +1,5 @@
 import unittest
 from selenium import webdriver
-import pytest
 
 
 class TestClass1(unittest.TestCase):
