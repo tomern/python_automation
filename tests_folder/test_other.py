@@ -67,3 +67,15 @@ class TestClass:
             assert 2 > 1
         if env == "stam":
             assert 2 < 1
+
+    @mark.config
+    def test_env_is_qa(self, app_config):
+        assert 'qa' in app_config.base_url
+
+    @mark.config
+    def test_env_is_dev(self, app_config):
+        assert 'dev' in app_config.base_url
+
+
+
+
