@@ -76,6 +76,19 @@ class TestClass:
     def test_env_is_dev(self, app_config):
         assert 'dev' in app_config.base_url
 
+    def test_api_mongo_services_get(self):
+        res = requests.get('http://localhost:8216/api/testrun')
+        assert 0 <= int(res.text)
+        assert res.status_code == 200, res.text
+
+    def test_api_mongo_services_post(self):
+        req_headers = {"authorization": "Bearer token"}
+        res = requests.post(url='https://httpbin.org/post', headers=req_headers, json={})
+        # res = requests.post(data='https://httpbin.org/post', headers=req_headers)
+        json = res.json()
+        url = json['headers']['Host']
+        assert url
+
 
 
 
