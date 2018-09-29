@@ -1,3 +1,6 @@
+from test_objects.test_run import TestRun
+import random as rnd
+
 
 def test_configurations(get_db_config):
     db = get_db_config
@@ -16,4 +19,14 @@ def test_runs(get_db_test):
     assert doc is not None
 
 
+def test_create_collection(get_db_test):
+    db = get_db_test
+    col_to_create = f"stam{str(rnd.Random().randint(100, 200))}"
+    db.create_collection(name=col_to_create)
+    print(db.list_collection_names())
+    assert col_to_create in db.list_collection_names()
+
+
+def test_insert_test_run(get_db_test, env):
+    test_run = TestRun(env)
 
