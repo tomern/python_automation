@@ -2,7 +2,6 @@ from datetime import datetime
 from mongo_folder.mongo import MongoDb
 from test_objects.results import Results
 import time
-from datetime import timedelta
 
 
 class TestRun:

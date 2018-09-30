@@ -93,7 +93,7 @@ class TestClass:
         assert request.node.name == 'test_test_name'
 
     @mark.testrun
-    def test_test_run1(self, test_run):
+    def test_test_run1(self, app_config, test_run, test):
         assert 1 == 1
 
     @mark.testrun
