@@ -2,6 +2,7 @@ from pytest import fixture
 from mongo_folder.mongo import MongoDb
 from browser_folder.browser import Browser
 from configuration_folder import my_config
+from test_objects.test_run import  TestRun
 
 
 # adding env param from cmd
@@ -40,3 +41,13 @@ def browser():
     _browser = Browser()
     yield _browser
     _browser.quit()
+
+
+# Creating a fixture that creates a testrun
+@fixture(scope='session')
+def test_run(env, request):
+    testrun = TestRun(env)
+    yield testrun
+    testrun.update_results(request)
+    # a =
+

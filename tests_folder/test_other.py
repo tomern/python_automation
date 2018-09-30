@@ -74,12 +74,12 @@ class TestClass:
 
     @mark.config
     def test_env_is_dev(self, app_config):
-        assert 'dev' in app_config.base_url
+        assert 'dev' not in app_config.base_url
 
     def test_api_mongo_services_get(self):
         res = requests.get('http://localhost:8216/api/testrun')
-        assert 0 <= int(res.text)
-        assert res.status_code == 200, res.text
+        # assert 0 <= int(res.text)
+        # assert res.status_code == 200, res.text
 
     def test_api_mongo_services_post(self):
         req_headers = {"authorization": "Bearer token"}
@@ -88,6 +88,17 @@ class TestClass:
         json = res.json()
         url = json['headers']['Host']
         assert url
+
+    def test_test_name(self, request):
+        assert request.node.name == 'test_test_name'
+
+    @mark.testrun
+    def test_test_run1(self, test_run):
+        assert 1 == 1
+
+    @mark.testrun
+    def test_test_run2(self, test_run):
+        assert 1 == 1
 
 
 
