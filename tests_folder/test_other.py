@@ -12,39 +12,39 @@ import datetime
 @mark.smoke
 class TestClass:
     @pytest.mark.skipif(2 > 2, reason="I don't want to run this now")
-    def test_calc_total(self):
+    def test_calc_total(self, test_run):
         res = mathlib.calc_total(6, 5)
         assert res > 10
 
     @pytest.mark.sanity
-    def test_calc_multiply1(self):
+    def test_calc_multiply1(self, test_run):
         res = mathlib.calc_multiply(2, 6)
         assert res > 10
 
     @pytest.mark.sanity
-    def test_calc_multiply2(self):
+    def test_calc_multiply2(self, test_run):
         res = mathlib.calc_multiply(2, 6)
         assert res > 10
 
-    def test_request_google(self):
+    def test_request_google(self, test_run):
         r = requests.get('http://www.google.com')
         assert r.status_code == 200
 
     @pytest.mark.parametrize('n', [1, 2, 4, 3])
-    def test_params(self, n):
+    def test_params(self, n, test_run):
         print(n)
         assert n > 0
 
-    def test_configuration(self):
+    def test_configuration(self, test_run):
         config = cfg.number
         print(config)
         return config
 
-    def test_cloudinary(self):
+    def test_cloudinary(self, test_run):
         url = cloud.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
         assert url is not None
 
-    def test_file_open_and_write(self):
+    def test_file_open_and_write(self, test_run):
         data = str(datetime.datetime.now())
         path = "C:/Users/tomern23/PycharmProjects/PytestProject/files/test.txt"
         files.save_file(data, path)
@@ -54,34 +54,34 @@ class TestClass:
         print(content)
         assert data in content
 
-    def test_cloudinary_with_config_json(self):
+    def test_cloudinary_with_config_json(self, test_run):
         url = cloudnew.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
         assert url is not None
 
-    def test_get_user_from_config(self):
+    def test_get_user_from_config(self, test_run):
         res = cfg.User.SiteA.usrename
         assert res is not None
 
-    def test_print_name(self, env):
+    def test_print_name(self, env, test_run):
         if env == "qa":
             assert 2 > 1
         if env == "stam":
             assert 2 < 1
 
     @mark.config
-    def test_env_is_qa(self, app_config):
+    def test_env_is_qa(self, app_config, test_run):
         assert 'qa' in app_config.base_url
 
     @mark.config
-    def test_env_is_dev(self, app_config):
+    def test_env_is_dev(self, app_config, test_run):
         assert 'dev' not in app_config.base_url
 
-    def test_api_mongo_services_get(self):
+    def test_api_mongo_services_get(self, test_run):
         res = requests.get('http://localhost:8216/api/testrun')
         # assert 0 <= int(res.text)
         # assert res.status_code == 200, res.text
 
-    def test_api_mongo_services_post(self):
+    def test_api_mongo_services_post(self, test_run):
         req_headers = {"authorization": "Bearer token"}
         res = requests.post(url='https://httpbin.org/post', headers=req_headers, json={})
         # res = requests.post(data='https://httpbin.org/post', headers=req_headers)
@@ -89,7 +89,7 @@ class TestClass:
         url = json['headers']['Host']
         assert url
 
-    def test_test_name(self, request):
+    def test_test_name(self, request, test_run):
         assert request.node.name == 'test_test_name'
 
     @mark.testrun
