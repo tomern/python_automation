@@ -12,7 +12,8 @@ class TestRun:
         self.test_run_id = self.col.count() + 1
         self.env = env
         self.duration = None
-        self.date = str(time.strftime('%d/%m/%Y %H:%M:%S'))
+        self.timef = '%d/%m/%Y %H:%M:%S'
+        self.date = str(time.strftime(self.timef))
         self.results = Results()
         self.json = {'TestRunId': self.test_run_id,
                      'Env': self.env,
@@ -28,9 +29,8 @@ class TestRun:
         self.json['Results']['failed'] = num_failed
         self.json['Results']['passed'] = num_passed
         time_temp = \
-            datetime.strptime(str(time.strftime('%d/%m/%Y %H:%M:%S')), '%d/%m/%Y %H:%M:%S') \
-            - datetime.strptime(self.date, '%d/%m/%Y %H:%M:%S')
-        self.duration = str(int(time_temp / timedelta(seconds=1)))
+            datetime.strptime(str(time.strftime(self.timef)), self.timef) - datetime.strptime(self.date, self.timef)
+        self.duration = str(time_temp)
         self.json['Duration'] = self.duration
         self.col.replace_one(filter={'TestRunId': self.test_run_id}, replacement=self.json, upsert=True)
 
