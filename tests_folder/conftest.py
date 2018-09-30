@@ -49,5 +49,10 @@ def test_run(env, request):
     testrun = TestRun(env)
     yield testrun
     testrun.update_results(request)
-    # a =
+
+
+@fixture()
+def stam(request):
+    return request
+
 
