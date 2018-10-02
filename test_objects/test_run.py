@@ -17,20 +17,18 @@ class TestRun:
         self.json = {'TestRunId': self.test_run_id,
                      'Env': self.env,
                      'Date': self.date,
-                     'Results': {'passed': 0, 'failed': 0},
+                     'Results': {'Passed': 0, 'Failed': 0, 'SentToHub': 0, 'Running': 0},
                      'Duration': self.duration
                      }
         self.col.replace_one(filter={'TestRunId': self.test_run_id}, replacement=self.json, upsert=True)
 
     def update_results(self, request):
-        num_failed = request.session.testsfailed
-        num_passed = request.session.testscollected - num_failed
-        self.json['Results']['failed'] = num_failed
-        self.json['Results']['passed'] = num_passed
-        time_temp = \
-            datetime.strptime(str(time.strftime(self.timef)), self.timef) - datetime.strptime(self.date, self.timef)
-        self.duration = str(time_temp)
+        self.duration = str(datetime.strptime(str(time.strftime(self.timef)), self.timef)
+                            - datetime.strptime(self.date, self.timef)
+                            )
         self.json['Duration'] = self.duration
+        self.json['Results']['Failed'] = request.session.testsfailed
+        self.json['Results']['Passed'] = request.session.testscollected - request.session.testsfailed
         self.col.replace_one(filter={'TestRunId': self.test_run_id}, replacement=self.json, upsert=True)
 
 
