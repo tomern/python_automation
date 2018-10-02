@@ -107,12 +107,12 @@ def test_test_name(request, test_run):
 
 
 @mark.testrun
-def test_test_run1(app_config, test_run, test):
+def test_test_run1(app_config, test_run, test, get_db_test, request):
     assert 1 == 1
 
 
 @mark.testrun
-def test_test_run2(test_run):
+def test_test_run2(app_config, test_run, test, get_db_test, request):
     assert 1 == 1
 
 

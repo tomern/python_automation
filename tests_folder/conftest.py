@@ -5,6 +5,7 @@ from configuration_folder import my_config
 from test_objects.test_run import  TestRun
 from test_objects.test import Test
 
+
 # adding env param from cmd
 def pytest_addoption(parser):
     parser.addoption("--env", action="store", default="qa", help="environment to run tests")
@@ -53,10 +54,10 @@ def test_run(env, request):
 
 # Test fixture
 @fixture()
-def test(env, request):
-    test = Test(env)
+def test(test_run, request):
+    test = Test(test_run, request)
     yield test
-    # test.update_results(request)
+    test.update_results()
 
 
 # Request fixture
