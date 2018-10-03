@@ -1,6 +1,5 @@
 from datetime import datetime
 from mongo_folder.mongo import MongoDb
-from test_objects.results import Results
 import time
 
 
@@ -13,11 +12,11 @@ class TestRun:
         self.duration = None
         self.timef = '%d/%m/%Y %H:%M:%S'
         self.date = str(time.strftime(self.timef))
-        self.results = Results()
+        self.results = {'Passed': 0, 'Failed': 0, 'SentToHub': 0, 'Running': 0}
         self.json = {'TestRunId': self.test_run_id,
                      'Env': self.env,
                      'Date': self.date,
-                     'Results': {'Passed': 0, 'Failed': 0, 'SentToHub': 0, 'Running': 0},
+                     'Results': self.results,
                      'Duration': self.duration
                      }
         self.col.replace_one(filter={'TestRunId': self.test_run_id}, replacement=self.json, upsert=True)
