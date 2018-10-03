@@ -8,7 +8,8 @@ class Test:
         self.timef = '%d/%m/%Y %H:%M:%S'
         self.db = MongoDb("test").db
         self.test_run_id = test_run.test_run_id
-        self.col = self.db.get_collection(f'testRun{self.test_run_id}')
+        self.col = self.db.get_collection("testRun{0}".format(self.test_run_id))
+        # self.col = self.db.get_collection(f'testRun{self.test_run_id}')
         self.result = {
                         'Status': '',
                         'StackTrace': '',

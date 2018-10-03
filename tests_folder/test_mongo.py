@@ -21,7 +21,8 @@ def test_runs(get_db_test):
 
 def test_create_collection(get_db_test):
     db = get_db_test
-    col_to_create = f"stam{str(rnd.Random().randint(100, 200))}"
+    col_to_create = "stam{0}".format(str(rnd.Random().randint(100, 200)))
+    # col_to_create = f"stam{str(rnd.Random().randint(100, 200))}"
     db.create_collection(name=col_to_create)
     print(db.list_collection_names())
     assert col_to_create in db.list_collection_names()
