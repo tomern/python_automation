@@ -1,4 +1,4 @@
-from test_objects.test_run import TestRun
+from test_objects.testrun import TestRun
 import random as rnd
 
 

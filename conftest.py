@@ -2,7 +2,7 @@ from pytest import fixture
 from mongo_folder.mongo import MongoDb
 from browser_folder.browser import Browser
 from configuration_folder import my_config
-from test_objects.test_run import TestRun
+from test_objects.testrun import TestRun
 from test_objects.test import Test
 
 
