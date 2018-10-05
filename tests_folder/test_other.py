@@ -44,8 +44,8 @@ def test_configuration(test_run):
     return config
 
 
-def test_cloudinary(test_run):
-    url = cloud.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
+def test_cloudinary(test_run, app_config):
+    url = cloud.upload_cloudinary(app_config.image, app_config)
     assert url is not None
 
 
@@ -60,8 +60,8 @@ def test_file_open_and_write(test_run):
     assert data in content
 
 
-def test_cloudinary_with_config_json(test_run):
-    url = cloudnew.upload_cloudinary('C:/Users/tomern23/Pictures/Cat.jpg')
+def test_cloudinary_with_config_json(test_run, app_config):
+    url = cloudnew.upload_cloudinary(app_config.image)
     assert url is not None
 
 
@@ -93,9 +93,9 @@ def test_api_mongo_services_get(test_run):
     # assert res.status_code == 200, res.text
 
 
-def test_api_mongo_services_post(test_run):
+def test_api_mongo_services_post(test_run, app_config):
     req_headers = {"authorization": "Bearer token"}
-    res = requests.post(url='https://httpbin.org/post', headers=req_headers, json={})
+    res = requests.post(url='{0}/post'.format(app_config.service_url), headers=req_headers, json={})
     # res = requests.post(data='https://httpbin.org/post', headers=req_headers)
     json = res.json()
     url = json['headers']['Host']

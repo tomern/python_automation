@@ -3,11 +3,11 @@ from browser_folder.browser_helper import BrowserHelper
 
 
 class Browser:
-    def __init__(self):
-        # self.driver = webdriver.Remote("http://localhost:4445/wd/hub", {"browserName": "chrome"})
-        self.driver = webdriver.Chrome(executable_path=r"C:\Users\tomern23\Desktop\chromedriver.exe")
+    def __init__(self, cfg, request):
+        self.driver = webdriver.Chrome(executable_path=cfg.chrome_path) if cfg.local \
+            else webdriver.Remote('http://{0}:{1}/wd/hub'.format(cfg.my_ip, cfg.sel_port), self.get_cap(cfg, request))
         self.browser_helper = BrowserHelper(self.driver)
-        self.driver.maximize_window()
+        self.maximize_window()
 
     def navigate(self, url):
         self.driver.get(url)
@@ -29,3 +29,17 @@ class Browser:
 
     def forward(self):
         self.driver.forward()
+
+    def get_cap(self, cfg, request):
+        desired_caps = dict()
+        desired_caps['browserName'] = cfg.browser_type
+        desired_caps['enableVNC'] = cfg.enable_vnc
+        desired_caps['enableVideo'] = cfg.enable_video
+        desired_caps['name'] = request.node.name
+        return desired_caps
+
+    def maximize_window(self):
+        try:
+            self.driver.maximize_window()
+        except:
+            pass

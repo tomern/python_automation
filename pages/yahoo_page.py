@@ -10,4 +10,3 @@ class Yahoo(BasePage):
     def fill_search_field(self, text):
         self.browser_helper.wait_for_element(self.search_field)
         self.browser_helper.send_text_to_element(self.search_field, text)
-

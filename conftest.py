@@ -26,36 +26,36 @@ def env(request):
 
 # configuration from MongoDB fixture
 @fixture()
-def get_db_config():
-    return MongoDb("configurations").db
+def get_db_config(app_config):
+    return MongoDb("configurations", app_config).db
 
 
 # test object from MongoDB fixture
 @fixture()
-def get_db_test():
-    return MongoDb("test").db
+def get_db_test(app_config):
+    return MongoDb("test", app_config).db
 
 
-# Browser fixture
+# browser fixture
 @fixture()
-def browser():
-    _browser = Browser()
+def browser(app_config, request):
+    _browser = Browser(app_config, request)
     yield _browser
     _browser.quit()
 
 
 # TestRun fixture
 @fixture(scope='session')
-def test_run(env, request):
-    testrun = TestRun(env)
+def test_run(app_config, request):
+    testrun = TestRun(app_config)
     yield testrun
     testrun.update_results(request)
 
 
 # Test fixture
 @fixture()
-def test(test_run, request):
-    test = Test(test_run, request)
+def test(test_run, request, app_config):
+    test = Test(test_run, request, app_config)
     yield test
     test.update_results()
 

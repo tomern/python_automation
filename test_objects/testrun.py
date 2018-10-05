@@ -4,11 +4,11 @@ import time
 
 
 class TestRun:
-    def __init__(self, env):
-        self.db = MongoDb("test").db
+    def __init__(self, cfg):
+        self.db = MongoDb("test", cfg).db
         self.col = self.db.get_collection('Runs')
         self.test_run_id = self.col.count() + 1
-        self.env = env
+        self.env = cfg.env
         self.duration = None
         self.timef = '%d/%m/%Y %H:%M:%S'
         self.date = str(time.strftime(self.timef))

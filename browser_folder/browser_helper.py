@@ -11,9 +11,13 @@ class BrowserHelper:
     def send_text_to_element(self, el, text):
         el().send_keys(text)
 
-    def wait_for_element(self, el, time_out=10):
+    def wait_for_element(self, el, time_out=20):
         wait = WebDriverWait(self.driver, time_out)
         return wait.until(lambda d: el().is_displayed())
+
+    def wait_for_element_disappear(self, el, time_out=20):
+        wait = WebDriverWait(self.driver, time_out)
+        return wait.until_not(lambda d: el().is_displayed())
 
     def scroll_to_element(self, el):
         self.driver.execute_script("arguments[0].scrollIntoView();", el())

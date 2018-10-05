@@ -2,9 +2,8 @@ from pymongo import MongoClient
 
 
 class MongoDb:
-    def __init__(self, db):
-        # self.client = MongoClient()
-        self.client = MongoClient('mongodb://mongo:27017/')
+    def __init__(self, db, cfg):
+        self.client = MongoClient() if cfg.local else MongoClient('mongodb://mongo:27017/')
         self.db = self.client[db]
 
     def create_collection(self, col_name):
