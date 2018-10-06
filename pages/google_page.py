@@ -5,9 +5,11 @@ from selenium.webdriver.common.by import By
 class Google(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
+        # region elements
         self.search_field = lambda: self.driver.find_element(By.NAME, 'q')
         self.gmail_btn = lambda: self.driver.find_element(By.XPATH, '//a[@dir="ltr"][1]')
         self.content = lambda: self.driver.find_element(By.XPATH, '//*[@class="ftr_col clearfix ftr_cols_channels"]')
+        # endregion elements
 
     def click_on_gmail_btn(self):
         self.browser_helper.wait_for_element(self.gmail_btn)

@@ -5,7 +5,9 @@ from selenium.webdriver.common.by import By
 class Yahoo(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
+        # region elements
         self.search_field = lambda: self.driver.find_element(By.ID, 'uh-search-box')
+        # endregion elements
 
     def fill_search_field(self, text):
         self.browser_helper.wait_for_element(self.search_field)
