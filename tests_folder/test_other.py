@@ -116,4 +116,15 @@ def test_test_run2(app_config, test_run, test, get_db_test, request):
     assert 1 == 1
 
 
-
+def test_lambda():
+    list1 = []
+    list2 = []
+    list1.append("a")
+    list1.append("b")
+    list1.append("c")
+    # Like Where lambda in C#
+    res = [l for l in list1 if l == "a" or l == "b"]
+    # Like ForEach lambda in C#
+    for i in list1: list2.append(i)
+    assert len(res) == 2
+    assert list1 == list2
