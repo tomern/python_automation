@@ -1,4 +1,4 @@
-from test_objects.testrun import TestRun
+from test_objects.testrun import Run
 import random as rnd
 
 
@@ -20,7 +20,7 @@ def test_runs(get_db_test):
 
 
 def test_insert_test_run(get_db_test, app_config):
-    test_run = TestRun(app_config)
+    test_run = Run(app_config)
 
 
 # def test_create_collection(get_db_test):

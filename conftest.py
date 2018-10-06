@@ -2,7 +2,7 @@ from pytest import fixture
 from mongo_folder.mongo import MongoDb
 from browser_folder.browser import Browser
 from configuration_folder import my_config
-from test_objects.testrun import TestRun
+from test_objects.testrun import Run
 from test_objects.test import Test
 
 
@@ -47,7 +47,7 @@ def browser(app_config, request):
 # TestRun fixture
 @fixture(scope='session')
 def test_run(app_config, request):
-    testrun = TestRun(app_config)
+    testrun = Run(app_config)
     yield testrun
     testrun.update_results(request)
 

@@ -19,6 +19,10 @@ class BrowserHelper:
         wait = WebDriverWait(self.driver, time_out)
         return wait.until_not(lambda d: el().is_displayed())
 
+    def wait_for_url(self, url, time_out=20):
+        wait = WebDriverWait(self.driver, time_out)
+        return wait.until(lambda d: url in self.driver.current_url)
+
     def scroll_to_element(self, el):
         self.driver.execute_script("arguments[0].scrollIntoView();", el())
 

@@ -5,8 +5,11 @@ from selenium.webdriver.common.by import By
 class JamesAllenFooter(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
+
         self.newsletter_input = lambda: self.driver.find_element(By.ID, 'newsletter-input')
         self.male_btn = lambda: self.driver.find_element(By.NAME, 'Male')
+
+        self.browser_helper.wait_for_url('james')
 
     def signup_email_list(self, user):
         self.browser_helper.wait_for_element(self.newsletter_input)

@@ -25,7 +25,7 @@ from pages.james_allen_footer import JamesAllenFooter
 
 @pytest.mark.element
 def test_three(browser, app_config):
-    browser.navigate(app_config.jamesallen_url)
+    browser.navigate(app_config.urls['jamesallen_url'])
     james_allen_footer = JamesAllenFooter(browser)
     james_allen_footer.signup_email_list(app_config.user_jamesallen)
     james_signup_thanks_popup = JamesSignupThanksPopup(browser)

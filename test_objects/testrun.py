@@ -3,7 +3,7 @@ from mongo_folder.mongo import MongoDb
 import time
 
 
-class TestRun:
+class Run:
     def __init__(self, cfg):
         self.db = MongoDb("test", cfg).db
         self.col = self.db.get_collection('Runs')

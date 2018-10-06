@@ -95,7 +95,7 @@ def test_api_mongo_services_get(test_run):
 
 def test_api_mongo_services_post(test_run, app_config):
     req_headers = {"authorization": "Bearer token"}
-    res = requests.post(url='{0}/post'.format(app_config.service_url), headers=req_headers, json={})
+    res = requests.post(url='{0}/post'.format(app_config.urls['service_url']), headers=req_headers, json={})
     # res = requests.post(data='https://httpbin.org/post', headers=req_headers)
     json = res.json()
     url = json['headers']['Host']
