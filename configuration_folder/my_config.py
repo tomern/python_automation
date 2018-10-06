@@ -6,10 +6,16 @@ class Config:
         self.my_ip = '10.100.102.7'
         self.rerun = 1
         self.sel_port = '4444'
+        self.mongo_port = '27017'
+        self.mongo_cont_name = 'mongo'
         self.chrome_path = r'C:\Users\tomern23\Desktop\chromedriver.exe'
         self.browser_type = 'chrome'
         self.number = 1
         self.image = 'C:/Users/tomern23/Pictures/Cat.jpg'
+        self.connections = {
+            'sql_local': 'Driver={SQL Server}; Server=.\SQLEXPRESS; Database=Northwind; Trusted_Connection=yes;',
+            'mongo_container': 'mongodb://{0}:{1}/'.format(self.mongo_cont_name, self.mongo_port)
+        }
         self.selenoid_caps = {
             'enable_vnc': True,
             'enable_video': True
@@ -37,6 +43,3 @@ class Config:
             'username': 'tomernoy1@gmail.com',
             'password': '123456'
         }
-
-
-

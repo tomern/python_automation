@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 class MongoDb:
     def __init__(self, db, cfg):
-        self.client = MongoClient() if cfg.local else MongoClient('mongodb://mongo:27017/')
+        self.client = MongoClient() if cfg.local else MongoClient(cfg.connections['mongo_container'])
         self.db = self.client[db]
 
     def create_collection(self, col_name):
