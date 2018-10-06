@@ -1,7 +1,7 @@
 
 class Config:
     def __init__(self, env):
-        self.local = True
+        self.local = False
         self.env = env
         self.my_ip = '10.100.102.7'
         self.rerun = 1
