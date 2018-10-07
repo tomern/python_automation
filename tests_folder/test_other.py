@@ -65,11 +65,6 @@ def test_cloudinary_with_config_json(test_run, app_config):
     assert url is not None
 
 
-def test_get_user_from_config(test_run):
-    res = cfg.User.SiteA.usrename
-    assert res is not None
-
-
 def test_print_name(env, test_run):
     if env == "qa":
         assert 2 > 1
