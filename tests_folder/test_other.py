@@ -1,4 +1,3 @@
-from configuration_folder import configuration as cfg
 from helper_folder import mathlib
 import requests
 import pytest
@@ -7,6 +6,7 @@ from helper_folder import cloudinary as cloud
 from helper_folder import cloudinary_new as cloudnew
 from helper_folder import files
 import datetime
+from configuration_folder import my_config as cfg
 
 
 @pytest.mark.skipif(2 > 2, reason="I don't want to run this now")

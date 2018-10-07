@@ -1,16 +1,18 @@
+rerun = 1
+rerun_delay = 1
+number = 1
+
 
 class Config:
     def __init__(self, env):
-        self.local = False
+        self.local = True
         self.env = env
         self.my_ip = '10.100.102.7'
-        self.rerun = 1
         self.sel_port = '4444'
         self.mongo_port = '27017'
         self.mongo_cont_name = 'mongo'
         self.chrome_path = r'C:\Users\tomern23\Desktop\chromedriver.exe'
         self.browser_type = 'chrome'
-        self.number = 1
         self.image = 'C:/Users/tomern23/Pictures/Cat.jpg'
         self.connections = {
             'sql_local': 'Driver={SQL Server}; Server=.\SQLEXPRESS; Database=Northwind; Trusted_Connection=yes;',
