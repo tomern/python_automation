@@ -4,6 +4,7 @@ from browser_folder.browser import Browser
 from configuration_folder import my_config
 from test_objects.testrun import Run
 from test_objects.test import Test
+import os
 
 
 # adding env param from cmd
@@ -66,3 +67,19 @@ def stam(request):
     return request
 
 
+@fixture
+def selenium(selenium):
+    selenium.implicitly_wait(10)
+    try:
+        selenium.maximize_window()
+    except:
+        pass
+    return selenium
+
+
+@fixture(scope='session')
+def session_capabilities(session_capabilities):
+    session_capabilities['enableVNC'] = True
+    session_capabilities['enableVideo'] = True
+    session_capabilities['name'] = os.environ.get('PYTEST_CURRENT_TEST').split(':')[-1].split(' ')[0]
+    return session_capabilities

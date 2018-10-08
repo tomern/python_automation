@@ -1,3 +1,5 @@
+import socket
+
 rerun = 1
 rerun_delay = 1
 number = 1
@@ -5,7 +7,7 @@ number = 1
 
 class Config:
     def __init__(self, env):
-        self.local = True
+        self.local = (True if 'L2GKV5E' in socket.gethostname() else False)
         self.env = env
         self.my_ip = '10.100.102.7'
         self.sel_port = '4444'
