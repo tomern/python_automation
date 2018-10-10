@@ -1,5 +1,3 @@
-from time import sleep
-
 
 def test_example1(selenium):
     selenium.get('http://www.example.com')
