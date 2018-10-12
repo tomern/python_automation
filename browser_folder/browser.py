@@ -32,7 +32,7 @@ class Browser:
 
     def get_cap(self, cfg, request):
         desired_caps = dict()
-        desired_caps['browserName'] = cfg.browser_type
+        desired_caps['browserName'] = cfg.browser_type.lower()
         desired_caps['enableVNC'] = cfg.selenoid_caps['enable_vnc']
         desired_caps['enableVideo'] = cfg.selenoid_caps['enable_video']
         desired_caps['name'] = request.node.name
