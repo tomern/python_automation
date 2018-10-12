@@ -6,8 +6,8 @@ class JamesAllenFooter(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         # region elements
-        self.newsletter_input = lambda: self.driver.find_element( By.ID, 'newsletter-input' )
-        self.male_btn = lambda: self.driver.find_element( By.NAME, 'Male' )
+        self.newsletter_input = lambda: self.driver.find_element(By.ID, 'newsletter-input')
+        self.male_btn = lambda: self.driver.find_element(By.NAME, 'Male')
         # endregion elements
         self.browser_helper.wait_for_url('james')
 
