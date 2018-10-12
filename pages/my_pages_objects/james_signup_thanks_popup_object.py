@@ -9,4 +9,4 @@ class JamesSignupThanksPopup(PageObject):
         self.close_thanx_rsgister.click()
 
     def check_popup_disabled(self):
-        return self.popup_div.is_displayed()
+        return self.w.wait_until_not(lambda f: self.popup_div, 30)

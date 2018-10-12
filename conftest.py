@@ -1,4 +1,5 @@
 from pytest import fixture
+from selenium.webdriver.support.wait import WebDriverWait
 from mongo_folder.mongo import MongoDb
 from browser_folder.browser import Browser
 from configuration_folder import my_config
@@ -69,7 +70,9 @@ def stam(request):
 
 @fixture
 def selenium(selenium):
-    selenium.implicitly_wait(10)
+    # selenium.implicitly_wait(10)
+    selenium.wait_until = lambda func, time_out=10: WebDriverWait(selenium, time_out).until(func)
+    selenium.wait_until_not = lambda func, time_out=10: WebDriverWait(selenium, time_out).until_not(func)
     try:
         selenium.maximize_window()
     except:

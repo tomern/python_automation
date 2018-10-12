@@ -7,18 +7,18 @@ number = 1
 
 class Config:
     def __init__(self, env):
-        self.local = (True if 'L2GKV5E' in socket.gethostname() else False)
+        self.local = ('L2GK' in socket.gethostname())
         self.env = env
         self.my_ip = '10.100.102.7'
         self.sel_port = '4444'
         self.mongo_port = '27017'
         self.mongo_cont_name = 'mongo'
         self.chrome_path = r'C:\Users\tomern23\Desktop\chromedriver.exe'
-        self.browser_type = 'chrome'
+        self.browser_type = 'Chrome'
         self.image = 'C:/Users/tomern23/Pictures/Cat.jpg'
         self.connections = {
             'sql_local': 'Driver={SQL Server}; Server=.\SQLEXPRESS; Database=Northwind; Trusted_Connection=yes;',
-            'mongo_container': 'mongodb://{0}:{1}/'.format(self.mongo_cont_name, self.mongo_port)
+            'mongo_container': 'mongodb://{0}:{1}'.format(self.mongo_cont_name, self.mongo_port)
         }
         self.selenoid_caps = {
             'enable_vnc': True,
