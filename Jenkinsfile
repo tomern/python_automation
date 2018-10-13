@@ -8,7 +8,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python test_mongo.py'
+                sh 'python test_other.py'
             }
         }
     }
