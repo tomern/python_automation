@@ -8,7 +8,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python /tests_folder/test_other.py'
+                sh 'python python_automation/tests_folder/test_other.py'
             }
         }
     }
