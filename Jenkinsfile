@@ -4,11 +4,11 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'python:2-alpine'
+                    image 'python:3-alpine'
                 }
             }
             steps {
-                sh 'python -m py_compile sources/test_mongo.py'
+                sh 'python test_mongo.py'
             }
         }
     }
