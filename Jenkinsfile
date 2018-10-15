@@ -1,14 +1,22 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
+        stage('Tests') {
             agent {
-                docker {
-                    image 'frolvlad/alpine-python3:latest'
+                dockerfile {
+                    dir 'tests_folder'
+                    filename 'Dockerfile'
                 }
             }
             steps {
-                sh 'python python_automation/tests_folder/test_other.py'
+                dir('tests_folder'){
+                    sh 'pytest test_other.py --junit-xml=reports/report.xml'
+                }
+            }
+            post {
+                always {
+                    junit 'tests_folder/reports/report.xml'
+                }
             }
         }
     }
