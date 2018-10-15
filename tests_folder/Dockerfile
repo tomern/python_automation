@@ -1,3 +1,2 @@
-FROM python
-RUN pip install -r requirements.txt
-RUN pip install pytest requests pytest-html pytest-xdist
+FROM python:latest
+RUN pip install docker-py feedparser nosexcover prometheus_client pycobertura pylint pytest pytest-cov requests setuptools sphinx pytest-html pytest-xdist
