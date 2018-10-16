@@ -10,7 +10,7 @@ pipeline {
             }
             steps {
                 dir('tests_folder'){
-                    sh 'pytest test_other.py --junit-xml=reports/report.xml'
+                    sh 'pytest test_other.py -vv -n 2 -v --junit-xml=reports/report.xml'
                 }
             }
             post {
