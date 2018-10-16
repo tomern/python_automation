@@ -6,6 +6,7 @@ pipeline {
                 dockerfile {
                     dir 'tests_folder'
                     filename 'Dockerfile'
+                    args '--link mongo'
                 }
             }
             steps {
