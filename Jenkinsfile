@@ -7,6 +7,7 @@ pipeline {
                     dir 'tests_folder'
                     filename 'Dockerfile'
                     args '--link mongo'
+                    args '--link mongo_services'
                     args '--network docker_default'
                 }
             }
