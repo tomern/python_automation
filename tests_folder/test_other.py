@@ -83,9 +83,8 @@ def test_env_is_dev(app_config, test_run):
 
 
 def test_api_mongo_services_get(test_run):
-    res = requests.get('http://localhost:8216/api/testrun')
-    # assert 0 <= int(res.text)
-    # assert res.status_code == 200, res.text
+    res = requests.get('http://mongo_services:8216/api/Configurations/Qa')
+    assert res.status_code == 200, res.text
 
 
 def test_api_mongo_services_post(test_run, app_config):
