@@ -6,11 +6,14 @@ pipeline {
                 dockerfile {
                     dir 'tests_folder'
                     filename 'Dockerfile'
+                    args '--link mongo'
+                    args '--link mongo_services'
+                    args '--network docker_default'
                 }
             }
             steps {
                 dir('tests_folder'){
-                    sh 'pytest test_other.py --junit-xml=reports/report.xml'
+                    sh 'pytest test_other.py -vv -n 2 -v --junit-xml=reports/report.xml'
                 }
             }
             post {
