@@ -131,3 +131,10 @@ def test_redis():
     res = r.get("key1")
     print(res)
     assert "value1" == res, 'verify value of key'
+
+
+def test_sql_container(my_sql):
+    mycursor = my_sql.cursor()
+    mycursor.execute("SHOW DATABASES")
+    for x in mycursor:
+        print(x)
