@@ -9,6 +9,7 @@ pipeline {
                     args '--link mongo'
                     args '--link redis'
                     args '--link mongo_services'
+                    args '--link mysql'
                     args '--network docker_default'
                 }
             }
