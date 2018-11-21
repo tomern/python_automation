@@ -8,4 +8,4 @@ pytest-selenium==1.14.0
 pytest-xdist==1.23.2
 page-objects==1.1.0
 redis==2.10.6
-mysql-connector=2.1.6
+mysql-connector==2.1.6
