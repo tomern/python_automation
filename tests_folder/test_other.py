@@ -127,7 +127,7 @@ def test_lambda():
 
 def test_redis():
     r = redis.StrictRedis(host='redis', decode_responses=True)
-    # r.set("key1", "value1")
+    r.set("key1", "value1")
     res = r.get("key1")
     print(res)
     assert "value1" == res, 'verify value of key'
