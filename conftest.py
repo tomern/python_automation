@@ -36,6 +36,7 @@ def my_sql(app_config):
         host=my_host,
         port=sql['port'],
         user=sql['user'],
+        password=sql['password'],
     )
     yield mydb
     mydb.close()

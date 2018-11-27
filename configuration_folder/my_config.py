@@ -22,7 +22,8 @@ class Config:
             'sql_container': {
                 'host': 'localhost',
                 'port': 3306,
-                'user': 'root'
+                'user': 'root',
+                'password': 'root'
             }
         }
         self.selenoid_caps = {
