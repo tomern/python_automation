@@ -9,7 +9,7 @@ class Run:
         self.col = self.db.get_collection('Runs')
         self.test_run_id = str(self.col.count() + 1)
         self.env = cfg.env
-        self.duration = ''
+        self.duration = ""
         self.category = None
         self.created_by = None
         self.timef = '%d/%m/%Y %H:%M:%S'
