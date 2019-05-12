@@ -7,6 +7,7 @@ from helper_folder import cloudinary_new as cloudnew
 from helper_folder import files
 import datetime
 from configuration_folder import my_config as cfg
+import redis
 
 
 @pytest.mark.skipif(2 > 2, reason="I don't want to run this now")
@@ -122,3 +123,18 @@ def test_lambda():
     for i in list1: list2.append(i)
     assert len(res) == 2
     assert list1 == list2
+
+
+def test_redis():
+    r = redis.StrictRedis(host='redis', decode_responses=True)
+    r.set("key1", "value1")
+    res = r.get("key1")
+    print(res)
+    assert "value1" == res, 'verify value of key'
+
+
+def test_sql_container(my_sql):
+    mycursor = my_sql.cursor()
+    mycursor.execute("SHOW DATABASES")
+    for x in mycursor:
+        print(x)

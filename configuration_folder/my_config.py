@@ -18,7 +18,13 @@ class Config:
         self.image = 'C:/Users/tomern23/Pictures/Cat.jpg'
         self.connections = {
             'sql_local': 'Driver={SQL Server}; Server=.\SQLEXPRESS; Database=Northwind; Trusted_Connection=yes;',
-            'mongo_container': 'mongodb://{0}:{1}'.format(self.mongo_cont_name, self.mongo_port)
+            'mongo_container': 'mongodb://{0}:{1}'.format(self.mongo_cont_name, self.mongo_port),
+            'sql_container': {
+                'host': 'localhost',
+                'port': 3306,
+                'user': 'root',
+                'password': 'root'
+            }
         }
         self.selenoid_caps = {
             'enable_vnc': True,

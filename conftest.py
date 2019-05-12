@@ -6,6 +6,7 @@ from configuration_folder import my_config
 from test_objects.testrun import Run
 from test_objects.test import Test
 import os
+import mysql.connector
 
 
 # adding env param from cmd
@@ -24,6 +25,21 @@ def app_config(env):
 @fixture(scope='session')
 def env(request):
     return request.config.getoption("--env")
+
+
+# mysql container fixture
+@fixture(scope='session')
+def my_sql(app_config):
+    sql = app_config.connections['sql_container']
+    my_host = sql['host'] if app_config.local else 'mysql'
+    mydb = mysql.connector.connect(
+        host=my_host,
+        port=sql['port'],
+        user=sql['user'],
+        password=sql['password'],
+    )
+    yield mydb
+    mydb.close()
 
 
 # configuration from MongoDB fixture
