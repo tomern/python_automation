@@ -7,9 +7,11 @@ class Run:
     def __init__(self, cfg):
         self.db = MongoDb("test", cfg).db
         self.col = self.db.get_collection('Runs')
-        self.test_run_id = self.col.count() + 1
+        self.test_run_id = str(self.col.count() + 1)
         self.env = cfg.env
-        self.duration = None
+        self.duration = ''
+        self.category = None
+        self.created_by = None
         self.timef = '%d/%m/%Y %H:%M:%S'
         self.date = str(time.strftime(self.timef))
         self.results = {'Passed': 0, 'Failed': 0, 'SentToHub': 0, 'Running': 0}
@@ -17,7 +19,9 @@ class Run:
                      'Env': self.env,
                      'Date': self.date,
                      'Results': self.results,
-                     'Duration': self.duration
+                     'Duration': self.duration,
+                     'Category': self.category,
+                     'CreatedBy': self.created_by
                      }
         self.col.replace_one(filter={'TestRunId': self.test_run_id}, replacement=self.json, upsert=True)
 
