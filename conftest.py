@@ -6,7 +6,7 @@ from configuration_folder import my_config
 from test_objects.testrun import Run
 from test_objects.test import Test
 import os
-import mysql.connector
+# import mysql.connector
 
 
 # adding env param from cmd
