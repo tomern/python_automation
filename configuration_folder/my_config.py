@@ -10,10 +10,10 @@ class Config:
         self.local = ('L2GK' in socket.gethostname())
         self.env = env
         self.my_ip = '10.100.102.7'
-        self.sel_port = '4444'
+        self.sel_port = '4445'
         self.mongo_port = '27017'
         self.mongo_cont_name = 'mongo'
-        self.chrome_path = r'C:\Users\tomern23\Desktop\chromedriver.exe'
+        self.chrome_path = r'C:\Users\tomern23\Desktop\Servers\chromedriver.exe'
         self.browser_type = 'Chrome'
         self.image = 'C:/Users/tomern23/Pictures/Cat.jpg'
         self.connections = {
