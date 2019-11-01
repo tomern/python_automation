@@ -10,7 +10,7 @@ pipeline {
                     args '--link redis'
                     args '--link mongo_services'
                     args '--link mysql'
-                    args '--network docker_default'
+                    args '--network Auto_default'
                 }
             }
             steps {
